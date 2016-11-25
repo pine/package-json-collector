@@ -1,10 +1,10 @@
 {
-  "name": "yarn-benchmark",
+  "name": "package-json-collector",
   "version": "1.0.0",
   "scripts": {
     "start": "node --harmony-async-await index.js"
   },
-  "license": "MIT",
+  "license": "Unlicense",
   "dependencies": {
     "co-fs-extra": "^1.2.1",
     "lodash": "^4.17.2",
