@@ -1,6 +1,6 @@
 # `package.json` collector :sparkles:
 
-Collect package.json of popular JavaScript repositories in GitHub
+Collect `package.json` from popular JavaScript repositories in GitHub
 
 ## Requirements
 
