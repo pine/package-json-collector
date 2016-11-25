@@ -1,0 +1,14 @@
+{
+  "name": "yarn-benchmark",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "node --harmony-async-await index.js"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "co-fs-extra": "^1.2.1",
+    "lodash": "^4.17.2",
+    "octokat": "^0.4.18",
+    "promise-retry": "^1.1.1"
+  }
+}
