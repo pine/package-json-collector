@@ -1,10 +1,12 @@
 'use strict'
 
 const path         = require('path')
-const fs           = require('co-fs-extra')
+const fs           = require('mz/fs')
 const compact      = require('lodash.compact')
 const Octokat      = require('octokat')
+const mkdirp       = require('mkdirp-promise/lib/node7')
 const promiseRetry = require('promise-retry')
+const rimraf       = require('rimraf-promise')
 
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN
 const REPOS_LENGTH = process.env.REPOS_LENGTH || 100
@@ -36,7 +38,7 @@ class GitHub {
 
   async getPkg(fullName) {
     try {
-      return this.octo.repos(fullName).contents('package.json').read()
+      return await this.octo.repos(fullName).contents('package.json').read()
     } catch (e) {
       if (e.message !== 'Not Found') {
         throw e
@@ -46,9 +48,7 @@ class GitHub {
 }
 
 async function clearSaveDir() {
-  if (await fs.access(SAVE_DIR)) {
-    await fs.remove(SAVE_DIR)
-  }
+  await rimraf(SAVE_DIR)
 }
 
 async function savePkgs(pkg) {
@@ -56,7 +56,7 @@ async function savePkgs(pkg) {
   const fullDir  = path.join(SAVE_DIR, dir)
   const fullPath = path.join(fullDir, 'package.json')
 
-  await fs.mkdirp(fullDir)
+  await mkdirp(fullDir)
   await fs.writeFile(fullPath, pkg.data)
 }
 
