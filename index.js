@@ -2,7 +2,7 @@
 
 const path         = require('path')
 const fs           = require('co-fs-extra')
-const _            = require('lodash')
+const compact      = require('lodash.compact')
 const Octokat      = require('octokat')
 const promiseRetry = require('promise-retry')
 
@@ -70,7 +70,7 @@ async function savePkgs(pkg) {
     console.info(`Find ${repos.length} JavaScript repos`)
 
     // download all package.json
-    const pkgs = _.compact(await Promise.all(repos.map(async repo => {
+    const pkgs = compact(await Promise.all(repos.map(async repo => {
       try {
         return {
           name    : repo.name,
