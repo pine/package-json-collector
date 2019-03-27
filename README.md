@@ -1,5 +1,7 @@
 # `package.json` collector :sparkles:
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/pine/package-json-collector.svg)](https://greenkeeper.io/)
+
 Collect `package.json` from popular JavaScript repositories in GitHub
 
 ## Requirements
